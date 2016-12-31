@@ -219,3 +219,7 @@ span {
     display: block;
   }
 }
+.education-entry h3 {
+  margin: 0;
+  padding: 12px 0 0;
+}
