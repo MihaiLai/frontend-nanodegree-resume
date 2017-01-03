@@ -1,8 +1,5 @@
-/*
-This is empty on purpose! Your code to build the resume will go here.
- */
-
-
+//create detail of a resume 
+//include contracts,education,works and projects
 var bio = {
   "name": "Mihai Lai",
   "role": "Web Developer",
@@ -14,7 +11,7 @@ var bio = {
   },
   "welcomeMessage" : "hello welcomeMessage",
   "skills": ["javascript", "css", "programming","java"],
-  "bioPic": "images/mihai.jpg"
+  "biopic": "images/mihai.jpg"
 };
 
 var education = {
@@ -23,7 +20,7 @@ var education = {
       "name": "Guangdong University of Technology",
       "location": "Guangzhou",
       "degree": "Bachelor of Science",
-      "major": ["Math", "Optics", "ElectronicSci"],
+      "majors": ["Math", "Optics", "ElectronicSci"],
       "dates": "2011.09-2015.07"
     }
   ],
@@ -31,7 +28,7 @@ var education = {
     {
       "title": "JavaScript Syntax",
       "school": "Udacity",
-      "dates": 2014,
+      "dates": "2014",
       "url": "https://classroom.udacity.com/courses/ud804"
     }
   ]
@@ -54,7 +51,12 @@ var projects = {
     {
       "title": "sample project 1",
       "dates": "2014",
-      "description": "Being able to pass logic around an application in the form of a function means it’s possible to move a lot of repetitive code into a library function. It makes it easier to separate the unique pieces of logic from the generally useful logic.For example, imagine you have a list of chocolate bars and you want to find all the ones that are made by Mars because you love M&Ms and you want to find out what other chocolatey goodness you could be enjoying.",
+      "description": "Being able to pass logic around an application in the form of a function" + 
+         "means it’s possible to move a lot of repetitive code into a library function. " +
+         "It makes it easier to separate the unique pieces of logic from the generally useful logic." +
+         "For example, imagine you have a list of chocolate bars and you want to find all" +
+         "the ones that are made by Mars because you love M&Ms and you want to find out " +
+         "what other chocolatey goodness you could be enjoying.",
       "images": ["images/fry.jpg","images/fry.jpg"]
 
     }
@@ -69,18 +71,22 @@ bio.display = function() {
   $("#header").prepend(formattedRole);
   $("#header").prepend(formattedName);
 
-  //contacts
+  //contacts: add my contacts at both top and foot of my resume
   var mobile = HTMLmobile.replace("%data%",bio.contacts.mobile);
   $("#topContacts").append(mobile);
+  $("#footerContacts").append(mobile);
   var email = HTMLemail.replace("%data%",bio.contacts.email);
   $("#topContacts").append(email);
+  $("#footerContacts").append(email);
   var github = HTMLgithub.replace("%data%",bio.contacts.github);
   $("#topContacts").append(github);
+  $("#footerContacts").append(github);
   var myLocation = HTMLlocation.replace("%data%",bio.contacts.location);
   $("#topContacts").append(myLocation);
+  $("#footerContacts").append(myLocation);
 
   //picture and welcome message
-  var bioPic = HTMLbioPic.replace("%data%",bio.bioPic);
+  var bioPic = HTMLbioPic.replace("%data%",bio.biopic);
   $("#header").append(bioPic);
   var welcomeMessage = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
   $("#header").append(welcomeMessage);
@@ -161,12 +167,13 @@ education.display = function() {
     var formattedLocation = HTMLschoolLocation.replace("%data%",school.location);
     $(".education-entry:last").append(formattedLocation);
 
-    var formattedMajor = HTMLschoolMajor.replace("%data%",school.major);
+    var formattedMajor = HTMLschoolMajor.replace("%data%",school.majors);
     $(".education-entry:last").append(formattedMajor);
   }
   //add online course
-  $(".education-entry:last").append(HTMLonlineClasses);
+  $("#education").append(HTMLonlineClasses);
   for (var j = 0; j < education.onlineCourses.length; j++) {
+    $("#education").append(HTMLschoolStart);
     var course = education.onlineCourses[j];
     var formattedTitle = HTMLonlineTitle.replace("%data%",course.title);
     var formattedSchool = HTMLonlineSchool.replace("%data%",course.school);

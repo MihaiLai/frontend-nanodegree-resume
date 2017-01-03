@@ -42,7 +42,7 @@ h2 {
 h3 {
   font-style: italic;
   font-size: 20px;
-  color: #000;
+  color: #999;
   line-height: 22px;
 }
 
@@ -218,8 +218,4 @@ span {
   .biopic {
     display: block;
   }
-}
-.education-entry h3 {
-  margin: 0;
-  padding: 12px 0 0;
 }
